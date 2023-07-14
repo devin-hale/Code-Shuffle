@@ -2,26 +2,14 @@
 import { createContext } from "react";
 import { useState } from "react";
 import Scoreboard from "@/scoreboard/scoreboard";
+import store from "./store";
+import { Provider } from "react-redux";
 
 export const Context = createContext(null);
 
 export default function Home() {
-  //Current score, high score, level states
-  const [currentScore, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
-  const [level, setLevel] = useState(1);
-
-  const value = {
-    currentScore,
-    setScore,
-    highScore,
-    setHighScore,
-    level,
-    setLevel,
-  };
-
   return (
-    <Context.Provider value={value}>
+    <Context.Provider>
       <div>
         <Scoreboard />
       </div>
