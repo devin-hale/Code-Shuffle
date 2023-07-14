@@ -4,7 +4,8 @@ The Odin Project Memory Game using React Hooks. Basically just a game where you'
 
 ## Code Outline
 
-- [] Context provider. Holds current score, high core, and current level states.
+### Context provider. Holds current score, high core, and current level states.
+
 - [] Function to increment current score.
 - [] Set current score to 0.
 - [] Compare current score to high score and update high score when current score > high score.
