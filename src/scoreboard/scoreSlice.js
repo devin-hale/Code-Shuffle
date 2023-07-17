@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
 
 export const scoreSlice = createSlice({
   name: "score",
@@ -6,10 +7,10 @@ export const scoreSlice = createSlice({
     value: 0,
   },
   reducers: {
-    increment: (state) => {
+    scoreIncrement: (state) => {
       state.value += 1;
     },
-    zero: (state) => {
+    scoreZero: (state) => {
       state.value = 0;
     },
   },
@@ -23,7 +24,7 @@ export const highScoreSlice = createSlice({
     value: 0,
   },
   reducers: {
-    increment: (state) => {
+    highScoreIncrement: (state) => {
       state.value += 1;
     },
     setEqual: (state, action) => {
@@ -40,10 +41,10 @@ export const levelSlice = createSlice({
     value: 1,
   },
   reducers: {
-    increment: (state) => {
+    levelIncrement: (state) => {
       state.value += 1;
     },
-    zero: (state) => {
+    levelZero: (state) => {
       state.value = 0;
     },
   },
@@ -51,4 +52,8 @@ export const levelSlice = createSlice({
 
 export const { levelIncrement, levelZero } = levelSlice.actions;
 
-export { scoreSlice, highScoreSlice, levelSlice };
+export default combineReducers({
+  levelSlice: levelSlice.reducer,
+  scoreSlice: scoreSlice.reducer,
+  highScoreSlice: highScoreSlice.reducer,
+});

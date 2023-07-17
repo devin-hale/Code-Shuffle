@@ -1,7 +1,8 @@
-import React, { createContext, useContext } from "react";
+import { configureStore } from "@reduxjs/toolkit";
+import scoreSlice from "@/scoreboard/scoreSlice";
 
-const GlobalContext = createContext({});
-
-export const StoreProvider = ({ children }) => {
-  const store = {};
-};
+export default configureStore({
+  reducer: {
+    score: scoreSlice,
+  },
+});
