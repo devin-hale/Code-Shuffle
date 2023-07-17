@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import scoreSlice from "@/components/scoreSlice";
+import scoreSlice from "@/components/scoreBoard/scoreSlice";
 
 export default configureStore({
   reducer: {
