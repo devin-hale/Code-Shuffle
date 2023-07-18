@@ -16,9 +16,11 @@ const GameBoard = () => {
   const highScore = useSelector((state) => state.score.highScoreSlice.value);
   const level = useSelector((state) => state.score.levelSlice.value);
 
+  const dispatch = useDispatch();
+
   //Compares score against high score.  If score is higher, update high score.
   const highScoreUpdate = () => {
-    score > highScore ? setEqual() : null;
+    score > highScore ? dispatch(setEqual()) : console.log("pee");
   };
 
   const readStuff = () => {
@@ -27,11 +29,29 @@ const GameBoard = () => {
 
   const [cardState, setCardState] = useState(cardData["level1"]);
 
-  return (
-    <div>
-      <p onClick={readStuff}>P</p>
-    </div>
-  );
+  const cardClick = (card) => {
+    const cardIndex = cardState.findIndex((i) => i.id == card.id);
+    if (cardIndex != -1 && !cardState[cardIndex].clicked) {
+      let newState = [...cardState];
+      newState[cardIndex].clicked = true;
+      setCardState(newState);
+      dispatch(scoreIncrement());
+    } else dispatch(scoreZero());
+  };
+
+  const mapCards = cardState.map((card) => {
+    return (
+      <div
+        className=" border-solid border-black border-[2px] w-[20px] cursor-pointer"
+        key={card.id}
+        onClick={() => cardClick(card)}
+      >
+        {card.name}
+      </div>
+    );
+  });
+
+  return <div>{mapCards}</div>;
 };
 
 export default GameBoard;

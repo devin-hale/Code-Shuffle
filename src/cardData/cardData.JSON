@@ -1,16 +1,19 @@
 {
     "level1" : [{
         "id": 1,
+        "name" : 1,
         "clicked": false,
         "img" : "link"
     },
     {
-        "id": 1,
+        "id": 2,
+        "name" : 2,
         "clicked": false,
         "img" : "link"
     },
     {
-        "id": 1,
+        "id": 3,
+        "name" : 3,
         "clicked": false,
         "img" : "link"
     } ]
