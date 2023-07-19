@@ -17,7 +17,7 @@ The Odin Project Memory Game using React Hooks. Basically just a game where you'
 - [x] Display current score.
 - [x] Display high score.
 - [x] Display current level.
-- [] Reset button.
+- [x] Reset button.
 
 ### "Gameboard" component
 
@@ -25,17 +25,17 @@ The Odin Project Memory Game using React Hooks. Basically just a game where you'
 - [x] Card object : ID(int), Name(string), img(string URL), clicked(bool) properties
 - [] Maybe multiple arrays for more levels.
 - [x] Function that ,given a unique ID, finds card object and sets it's clicked property state to true.
-- [] Level win state.
+- [x] Level win.
 
 #### Rendering Cards
 
-- [] Function that renders all cards in state object to JSX in random order. Corresponding state properties are passed as props.
+- [x] Function that renders all cards in state object to JSX in random order. Corresponding state properties are passed as props.
   - Changed. Properties are now just accessed through local state.
 - [x] onClick
   - [x] Check if clickable
   - [x] Increment current score
-  - [] Re-shuffle board without changing state.
-  - [] Advance level if all cards in state are clicked.
+  - [x] Re-shuffle board without changing state.
+  - [x] Advance level if all cards in state are clicked.
   - [x] Reset Board if not clickable.
   - [x] Reset level if not clickable.
 

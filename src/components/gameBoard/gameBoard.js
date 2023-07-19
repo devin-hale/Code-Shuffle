@@ -43,7 +43,8 @@ const GameBoard = () => {
       dispatch(scoreIncrement());
       //In case of win.
       if (levelWin()) {
-        console.log("Win level!");
+        if (level < 2) dispatch(levelIncrement());
+        else console.log("Win!");
       }
     } else resetGame();
   };
@@ -61,7 +62,12 @@ const GameBoard = () => {
     return cardState.some((card) => !card.clicked) ? false : true;
   };
 
-  //
+  //Every time level is updated, pull new level data, shuffle it, and set it as state.
+  useEffect(() => {
+    let nextLevel = cardData[`level${level}`];
+    shuffleCards(nextLevel);
+    setCardState(nextLevel);
+  }, [level]);
 
   //Shuffles cardState.
   const shuffleCards = (cardState) => {
