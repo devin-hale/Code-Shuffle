@@ -41,7 +41,10 @@ const GameBoard = () => {
     if (checkClickable(card)) {
       updateCardState(card);
       dispatch(scoreIncrement());
-      console.log(cardState);
+      //In case of win.
+      if (levelWin()) {
+        console.log("Win level!");
+      }
     } else resetGame();
   };
 
@@ -51,6 +54,14 @@ const GameBoard = () => {
     dispatch(scoreZero());
     dispatch(levelZero());
   };
+
+  //Checks for level win.  Returns true for win, false for not win.
+  const levelWin = () => {
+    // .some checks for any unclicked cards.  Reverse using ? to get the desired bool.
+    return cardState.some((card) => !card.clicked) ? false : true;
+  };
+
+  //
 
   //Shuffles cardState.
   const shuffleCards = (cardState) => {
@@ -62,6 +73,7 @@ const GameBoard = () => {
     }
   };
 
+  //Maps cards to gameboard div.
   const mapCards = cardState.map((card) => {
     return (
       <div
