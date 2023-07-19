@@ -19,7 +19,7 @@ export const scoreSlice = createSlice({
 export const { scoreIncrement, scoreZero } = scoreSlice.actions;
 
 export const highScoreSlice = createSlice({
-  name: "score",
+  name: "highscore",
   initialState: {
     value: 0,
   },
@@ -28,6 +28,7 @@ export const highScoreSlice = createSlice({
       state.value += 1;
     },
     setEqual: (state, action) => {
+      console.log(action);
       state.value = action.payload;
     },
   },

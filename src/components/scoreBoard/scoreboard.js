@@ -9,13 +9,12 @@ const Scoreboard = () => {
   const dispatch = useDispatch();
 
   const highScoreUpdate = () => {
-    score > highScore ? dispatch(setEqual()) : null;
+    score > highScore ? dispatch(setEqual(score)) : null;
   };
 
   useEffect(() => {
-    highScoreUpdate(score);
-    console.log(highScore);
-  }, [score]);
+    highScoreUpdate();
+  });
 
   return (
     <div className="flex flex-row">

@@ -19,9 +19,6 @@ const GameBoard = () => {
   const dispatch = useDispatch();
 
   //Compares score against high score.  If score is higher, update high score.
-  const highScoreUpdate = () => {
-    score > highScore ? dispatch(setEqual()) : console.log("pee");
-  };
 
   const readStuff = () => {
     console.log(cardData[`level${level}`]);
