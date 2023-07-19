@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   scoreIncrement,
@@ -19,7 +19,8 @@ const GameBoard = () => {
   const dispatch = useDispatch();
 
   //Initialize cardData state.  Uses level 1 as default.
-  const [cardState, setCardState] = useState(cardData["level1"]);
+  const defaultData = cardData["level1"];
+  const [cardState, setCardState] = useState(defaultData);
 
   //Given a card, checks if it is clicked in state or not.
   const checkClickable = (card) => {
@@ -44,7 +45,7 @@ const GameBoard = () => {
 
   //Resets cardstate to level 1.  Zeroes level and current score.
   const resetGame = () => {
-    setCardState(cardData["level1"]);
+    cardData[`level${1}`].forEach((el) => (el.clicked = false));
     dispatch(scoreZero());
     dispatch(levelZero());
   };
@@ -61,7 +62,18 @@ const GameBoard = () => {
     );
   });
 
-  return <div>{mapCards}</div>;
+  return (
+    <div>
+      <div>{mapCards}</div>
+      <button
+        className="border-black border-[2px] p-1 text-center m-2"
+        type="button"
+        onClick={resetGame}
+      >
+        Reset
+      </button>
+    </div>
+  );
 };
 
 export default GameBoard;
