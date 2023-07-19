@@ -18,12 +18,7 @@ const GameBoard = () => {
 
   const dispatch = useDispatch();
 
-  //Compares score against high score.  If score is higher, update high score.
-
-  const readStuff = () => {
-    console.log(cardData[`level${level}`]);
-  };
-
+  //Initialize cardData state.  Uses level 1 as default.
   const [cardState, setCardState] = useState(cardData["level1"]);
 
   //Given a card, checks if it is clicked in state or not.
@@ -44,7 +39,14 @@ const GameBoard = () => {
     if (checkClickable(card)) {
       updateCardState(card);
       dispatch(scoreIncrement());
-    }
+    } else resetGame();
+  };
+
+  //Resets cardstate to level 1.  Zeroes level and current score.
+  const resetGame = () => {
+    setCardState(cardData["level1"]);
+    dispatch(scoreZero());
+    dispatch(levelZero());
   };
 
   const mapCards = cardState.map((card) => {

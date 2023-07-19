@@ -30,9 +30,15 @@ The Odin Project Memory Game using React Hooks. Basically just a game where you'
 
 #### Rendering Cards
 
-- [x] Function that renders all cards in state object to JSX in random order. Corresponding state properties are passed as props.
+- [] Function that renders all cards in state object to JSX in random order. Corresponding state properties are passed as props.
   - Changed. Properties are now just accessed through local state.
-- [] onClick = check if clicked = true. Run high score checker, then reset board and score if true. Increment current score. Run high score checker.
+- [x] onClick
+  - [x] Check if clickable
+  - [x] Increment current score
+  - [] Re-shuffle board without changing state.
+  - [] Advance level if all cards in state are clicked.
+  - [x] Reset Board if not clickable.
+  - [x] Reset level if not clickable.
 
 ### Message components.
 

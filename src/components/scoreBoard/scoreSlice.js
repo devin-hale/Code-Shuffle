@@ -45,7 +45,7 @@ export const levelSlice = createSlice({
       state.value += 1;
     },
     levelZero: (state) => {
-      state.value = 0;
+      state.value = 1;
     },
   },
 });
