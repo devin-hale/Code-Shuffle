@@ -8,10 +8,12 @@ const Scoreboard = () => {
   const level = useSelector((state) => state.score.levelSlice.value);
   const dispatch = useDispatch();
 
+  //If score is higher than high score, dispatch for global store to update high score.
   const highScoreUpdate = () => {
     score > highScore ? dispatch(setEqual(score)) : null;
   };
 
+  //Any time the scoreboard is updated, update high score.
   useEffect(() => {
     highScoreUpdate();
   });

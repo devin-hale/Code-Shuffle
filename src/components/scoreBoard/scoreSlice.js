@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 
+//Handles global current score state.
 export const scoreSlice = createSlice({
   name: "score",
   initialState: {
@@ -18,6 +19,7 @@ export const scoreSlice = createSlice({
 
 export const { scoreIncrement, scoreZero } = scoreSlice.actions;
 
+//Handles global high score state.
 export const highScoreSlice = createSlice({
   name: "highscore",
   initialState: {
@@ -35,6 +37,7 @@ export const highScoreSlice = createSlice({
 
 export const { highScoreIncrement, setEqual } = highScoreSlice.actions;
 
+//Handles global level state.
 export const levelSlice = createSlice({
   name: "level",
   initialState: {
