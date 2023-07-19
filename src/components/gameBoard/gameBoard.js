@@ -27,11 +27,12 @@ const GameBoard = () => {
     return cardState.some((c) => c.id === card.id && !c.clicked);
   };
 
-  //Takes card, finds in state, creates new state, sets clicked to true, updates state.
+  //Takes card, finds in state, creates new state, sets clicked to true, shuffles new state, and then updates state.
   const updateCardState = (card) => {
     let cardIndex = cardState.findIndex((i) => i.id === card.id);
     let newState = [...cardState];
     newState[cardIndex].clicked = true;
+    shuffleCards(newState);
     setCardState(newState);
   };
 
@@ -40,6 +41,7 @@ const GameBoard = () => {
     if (checkClickable(card)) {
       updateCardState(card);
       dispatch(scoreIncrement());
+      console.log(cardState);
     } else resetGame();
   };
 
@@ -48,6 +50,16 @@ const GameBoard = () => {
     cardData[`level${1}`].forEach((el) => (el.clicked = false));
     dispatch(scoreZero());
     dispatch(levelZero());
+  };
+
+  //Shuffles cardState.
+  const shuffleCards = (cardState) => {
+    for (let i = cardState.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = cardState[i];
+      cardState[i] = cardState[j];
+      cardState[j] = temp;
+    }
   };
 
   const mapCards = cardState.map((card) => {
