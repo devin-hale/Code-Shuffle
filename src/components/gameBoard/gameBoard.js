@@ -26,14 +26,25 @@ const GameBoard = () => {
 
   const [cardState, setCardState] = useState(cardData["level1"]);
 
+  //Given a card, checks if it is clicked in state or not.
+  const checkClickable = (card) => {
+    return cardState.some((c) => c.id === card.id && !c.clicked);
+  };
+
+  //Takes card, finds in state, creates new state, sets clicked to true, updates state.
+  const updateCardState = (card) => {
+    let cardIndex = cardState.findIndex((i) => i.id === card.id);
+    let newState = [...cardState];
+    newState[cardIndex].clicked = true;
+    setCardState(newState);
+  };
+
+  //Takes card, checks if clickable.  Updates card state and increments score in redux if true.
   const cardClick = (card) => {
-    const cardIndex = cardState.findIndex((i) => i.id == card.id);
-    if (cardIndex != -1 && !cardState[cardIndex].clicked) {
-      let newState = [...cardState];
-      newState[cardIndex].clicked = true;
-      setCardState(newState);
+    if (checkClickable(card)) {
+      updateCardState(card);
       dispatch(scoreIncrement());
-    } else dispatch(scoreZero());
+    }
   };
 
   const mapCards = cardState.map((card) => {

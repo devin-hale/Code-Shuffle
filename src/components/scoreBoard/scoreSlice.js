@@ -28,7 +28,6 @@ export const highScoreSlice = createSlice({
       state.value += 1;
     },
     setEqual: (state, action) => {
-      console.log(action);
       state.value = action.payload;
     },
   },
