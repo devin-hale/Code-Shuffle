@@ -1,39 +1,70 @@
 {
     "level1" : [{
         "id": 1,
-        "name" : 1,
+        "name" : "Javascript",
         "clicked": false,
-        "img" : "link"
+        "img" : "./images/javascript.svg"
+    }
+    ],
+
+    "level10" : [{
+        "id": 1,
+        "name" : "Javascript",
+        "clicked": false,
+        "img" : "./images/javascript.svg"
     },
     {
         "id": 2,
-        "name" : 2,
+        "name" : "Python",
         "clicked": false,
-        "img" : "link"
+        "img" : "./images/python.svg"
     },
     {
         "id": 3,
-        "name" : 3,
+        "name" : "Ruby",
         "clicked": false,
-        "img" : "link"
-    } ],
-
-    "level2" : [{
+        "img" : "./images/ruby.svg"
+    },
+    {
         "id": 4,
-        "name" : 4,
+        "name" : "Swift",
         "clicked": false,
-        "img" : "link"
+        "img" : "./images/java.svg"
     },
     {
         "id": 5,
-        "name" : 5,
+        "name" : "Java",
         "clicked": false,
-        "img" : "link"
+        "img" : "./images/java.svg"
     },
     {
         "id": 6,
-        "name" : 6,
+        "name" : "C#",
         "clicked": false,
-        "img" : "link"
-    } ]
+        "img" : "./images/csharp.svg"
+    },
+    {
+        "id": 7,
+        "name" : "C++",
+        "clicked": false,
+        "img" : "./images/cpp.svg"
+    },
+    {
+        "id": 8,
+        "name" : "Rust",
+        "clicked": false,
+        "img" : "./images/rust.svg"
+    },
+    {
+        "id": 9,
+        "name" : "Objective-C",
+        "clicked": false,
+        "img" : "./images/java.svg"
+    },
+    {
+        "id": 10,
+        "name" : "C",
+        "clicked": false,
+        "img" : "./images/c.svg"
+    }]
 }
