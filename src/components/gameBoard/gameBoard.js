@@ -42,6 +42,15 @@ const GameBoard = () => {
     }, 400);
   };
 
+  const handleReset = () => {
+    setCardFade(cardFadeOutReset);
+    setTimeout(() => {
+      resetGame();
+      setGameLost(false);
+      setCardFade(cardFadeIn);
+    }, 400);
+  };
+
   const handleTutClose = () => {
     setStyle(modalBGFadeOut);
     setTimeout(() => {
@@ -212,9 +221,9 @@ const GameBoard = () => {
         {mapCards}
       </div>
       <button
-        className="border-black border-[2px] p-1 text-center m-auto w-fit fixed bottom-[10px] right-[43%] md:bottom-[94.125%] md:right-[2%]"
+        className=" bg-red-300 shadow-lg font-bold rounded p-1 text-center m-auto w-fit fixed bottom-[10px] right-[43%] md:bottom-[94.125%] md:right-[2%] transition-all hover:transition-all hover:bg-red-400"
         type="button"
-        onClick={resetGame}
+        onClick={handleReset}
       >
         Reset
       </button>

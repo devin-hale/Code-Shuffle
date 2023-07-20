@@ -44,6 +44,3 @@ The Odin Project Memory Game using React Hooks. Basically just a game where you'
 ### Message components.
 
 - [x] Lose screen with Score, High Score, and Play again button.
-- [] Reset confirmation screen. Yes/No?
-- [] Secret screen that says something wacky and dumb.
-- [] 2nd even secreter screen that says something even dumber and wackier.
