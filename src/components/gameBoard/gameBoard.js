@@ -31,11 +31,11 @@ const GameBoard = () => {
 
   const handleClose = () => {
     setStyle(modalBGFadeOut);
-    resetGame();
     setTimeout(() => {
+      resetGame();
       setGameLost(false);
       setStyle(modalBGFadeIn);
-    }, 500);
+    }, 400);
   };
 
   //Given a card, checks if it is clicked in state or not.
@@ -116,13 +116,27 @@ const GameBoard = () => {
       {gameLost ? (
         <div
           id="lostGameModal"
-          className=" fixed w-[100lvw] h-[100lvh] top-0 left-0 bg-[rgba(0,0,0,.75)] z-10"
+          className=" fixed w-[100lvw] h-[100lvh] top-0 left-0 bg-[rgba(0,0,0,.875)] z-10"
           style={style}
         >
           <div className="modalWindowFadeDown bg-white w-fit p-5 z-20 text-center rounded shadow-lg fixed top-40 left-[28%] md:left-[42.5lvw]">
             <p className="font-bold text-2xl">You lose!</p>
+            <div className="flex flex-col w-[150px] m-5 text-center text-lg">
+              <div className="flex flex-row justify-between w-[100%]">
+                <p className=" font-bold">Level: </p>
+                <p>{level}</p>
+              </div>
+              <div className="flex flex-row justify-between w-[100%]">
+                <p className=" font-bold ">Score: </p>
+                <p>{score}</p>
+              </div>
+              <div className="flex flex-row justify-between w-[100%]">
+                <p className=" font-bold">High Score: </p>
+                <p>{highScore}</p>
+              </div>
+            </div>
             <button
-              className=" bg-green-300 p-1 rounded-md shadow-lg hover:bg-green-400 transition-all hover:transition-all"
+              className=" bg-green-300 font-bold p-1 rounded-md shadow-lg hover:bg-green-400 transition-all hover:transition-all"
               type="button"
               onClick={() => {
                 handleClose();
