@@ -43,7 +43,7 @@ const GameBoard = () => {
       dispatch(scoreIncrement());
       //In case of win.
       if (levelWin()) {
-        if (level < 2) dispatch(levelIncrement());
+        if (level < 10) dispatch(levelIncrement());
         else console.log("Win!");
       }
     } else resetGame();
@@ -83,20 +83,23 @@ const GameBoard = () => {
   const mapCards = cardState.map((card) => {
     return (
       <div
-        className=" border-solid border-black border-[2px] w-[20px] cursor-pointer"
+        className=" border-solid border-black border-[2px] w-[100px] p-1 cursor-pointer"
         key={card.id}
         onClick={() => cardClick(card)}
       >
-        {card.name}
+        <p>{card.name}</p>
+        <img className=" w-[100%]" src={card.img} />
       </div>
     );
   });
 
   return (
-    <div>
-      <div>{mapCards}</div>
+    <div className="m-auto grid grid-cols-1 align-middle">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-2 justify-center m-3">
+        {mapCards}
+      </div>
       <button
-        className="border-black border-[2px] p-1 text-center m-2"
+        className="border-black border-[2px] p-1 text-center m-auto w-fit fixed bottom-[10px] right-[43%] md:bottom-[94.125%] md:right-[5%] xl:right-[15%]"
         type="button"
         onClick={resetGame}
       >
