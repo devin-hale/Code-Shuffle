@@ -25,7 +25,7 @@ The Odin Project Memory Game using React Hooks. Basically just a game where you'
 
 - [x] Holds card array in state.
 - [x] Card object : ID(int), Name(string), img(string URL), clicked(bool) properties
-- [] Maybe multiple arrays for more levels.
+- [x] Maybe multiple arrays for more levels.
 - [x] Function that ,given a unique ID, finds card object and sets it's clicked property state to true.
 - [x] Level win.
 
