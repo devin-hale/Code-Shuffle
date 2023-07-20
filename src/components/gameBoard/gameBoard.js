@@ -22,6 +22,22 @@ const GameBoard = () => {
   const defaultData = cardData["level1"];
   const [cardState, setCardState] = useState(defaultData);
 
+  const [gameLost, setGameLost] = useState(false);
+
+  const modalBGFadeIn = { animation: "modalBGFadeIn .5s ease 0s" };
+  const modalBGFadeOut = { animation: "modalBGFadeOut .5s ease 0s" };
+
+  const [style, setStyle] = useState(modalBGFadeIn);
+
+  const handleClose = () => {
+    setStyle(modalBGFadeOut);
+    resetGame();
+    setTimeout(() => {
+      setGameLost(false);
+      setStyle(modalBGFadeIn);
+    }, 500);
+  };
+
   //Given a card, checks if it is clicked in state or not.
   const checkClickable = (card) => {
     return cardState.some((c) => c.id === card.id && !c.clicked);
@@ -46,12 +62,14 @@ const GameBoard = () => {
         if (level < 10) dispatch(levelIncrement());
         else console.log("Win!");
       }
-    } else resetGame();
+    } else setGameLost(true);
   };
 
   //Resets cardstate to level 1.  Zeroes level and current score.
   const resetGame = () => {
-    cardData[`level${1}`].forEach((el) => (el.clicked = false));
+    for (let i = 1; i <= 10; i++) {
+      cardData[`level${i}`].forEach((el) => (el.clicked = false));
+    }
     dispatch(scoreZero());
     dispatch(levelZero());
   };
@@ -93,10 +111,28 @@ const GameBoard = () => {
     );
   });
 
-  const loseGameRender = () => {};
-
   return (
     <div className="m-auto grid grid-cols-1 align-middle">
+      {gameLost ? (
+        <div
+          id="lostGameModal"
+          className=" fixed w-[100lvw] h-[100lvh] top-0 left-0 bg-[rgba(0,0,0,.75)] z-10"
+          style={style}
+        >
+          <div className="modalWindowFadeDown bg-white w-fit p-5 z-20 text-center rounded shadow-lg fixed top-40 left-[28%] md:left-[42.5lvw]">
+            <p className="font-bold text-2xl">You lose!</p>
+            <button
+              className=" bg-green-300 p-1 rounded-md shadow-lg hover:bg-green-400 transition-all hover:transition-all"
+              type="button"
+              onClick={() => {
+                handleClose();
+              }}
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      ) : null}
       <div className="grid grid-cols-3 md:grid-cols-5 gap-2 justify-center m-3">
         {mapCards}
       </div>
