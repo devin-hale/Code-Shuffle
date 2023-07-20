@@ -83,7 +83,7 @@ const GameBoard = () => {
   const mapCards = cardState.map((card) => {
     return (
       <div
-        className=" border-solid border-black border-[2px] w-[100px] p-1 cursor-pointer"
+        className=" border-solid border-black border-[2px] w-[100px] p-1 cursor-pointer text-center"
         key={card.id}
         onClick={() => cardClick(card)}
       >
@@ -92,6 +92,8 @@ const GameBoard = () => {
       </div>
     );
   });
+
+  const loseGameRender = () => {};
 
   return (
     <div className="m-auto grid grid-cols-1 align-middle">

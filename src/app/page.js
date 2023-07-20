@@ -9,7 +9,7 @@ import "./globals.css";
 export default function Home() {
   return (
     <Provider store={store}>
-      <div className="flex flex-col align-middle">
+      <div className="flex flex-col align-middle font-anon">
         <Scoreboard />
         <GameBoard />
       </div>
