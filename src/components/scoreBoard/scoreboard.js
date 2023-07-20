@@ -19,20 +19,20 @@ const Scoreboard = () => {
   });
 
   return (
-    <div className="flex flex-row m-auto mt-[10px] w-[100%] justify-center">
-      <div className="border-solid border-[2px] border-black flex flex-nowrap justify-evenly align-middle w-[75px] md:w-[150px] md:text-[25px]">
-        <p>Level:</p>
+    <div className="flex flex-row m-auto mt-[10px] w-[100%] justify-evenly">
+      <div className=" bg-slate-300 rounded flex flex-nowrap justify-evenly align-middle w-[75px] md:w-[150px] md:text-[25px]">
+        <p className="font-bold">Level:</p>
         <p>{level}</p>
       </div>
       <div
         id="scoreBoardScore"
-        className="border-solid border-[2px] border-black flex flex-nowrap justify-evenly align-middle w-[75px] md:w-[150px] md:text-[25px]"
+        className="bg-slate-300 rounded flex flex-nowrap justify-evenly align-middle w-[75px] md:w-[150px] md:text-[25px]"
       >
-        <p>Score:</p>
+        <p className="font-bold">Score:</p>
         <p>{score}</p>
       </div>
-      <div className="border-solid border-[2px] border-black flex flex-nowrap justify-evenly align-middle w-[115px] md:w-[200px] md:text-[25px]">
-        <p>High Score:</p>
+      <div className="bg-slate-300 rounded border-black flex flex-nowrap justify-evenly align-middle w-[115px] md:w-[200px] md:text-[25px]">
+        <p className="font-bold">High Score:</p>
         <p>{highScore}</p>
       </div>
     </div>

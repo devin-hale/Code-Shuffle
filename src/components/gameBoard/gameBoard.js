@@ -46,6 +46,7 @@ const GameBoard = () => {
     setStyle(modalBGFadeOut);
     setTimeout(() => {
       setTutorialLoad(false);
+      setStyle(modalBGFadeIn);
     }, 400);
   };
 
@@ -145,13 +146,16 @@ const GameBoard = () => {
           className=" fixed w-[100lvw] h-[100lvh] top-0 left-0 bg-[rgba(0,0,0,.875)] z-10"
           style={style}
         >
-          <div className="modalWindowFadeDown bg-white w-fit p-5 z-20 text-center rounded shadow-lg fixed top-40 left-[28%] md:left-[42.5lvw]">
+          <div className="modalWindowFadeDown bg-white w-[350px] p-5 z-20 text-center rounded shadow-lg m-auto mt-[100px]">
             <p className="font-bold text-2xl">Code Shuffle</p>
-            <div className="flex flex-col w-[150px] m-5 text-center text-lg">
+            <div className="flex flex-col w-[300px] m-auto p-5 text-center text-lg">
               <h1 className="font-bold">Rules:</h1>
               <ul className="list-disc">
                 <li className="w-fit text-[17px]">
                   During each level, you may only click each language once.
+                </li>
+                <li className="w-fit text-[17px]">
+                  Each round, the icons will be shuffled.
                 </li>
                 <li className="w-fit text-[17px]">
                   If you click an icon twice in one level, you lose!
@@ -208,7 +212,7 @@ const GameBoard = () => {
         {mapCards}
       </div>
       <button
-        className="border-black border-[2px] p-1 text-center m-auto w-fit fixed bottom-[10px] right-[43%] md:bottom-[94.125%] md:right-[5%] xl:right-[15%]"
+        className="border-black border-[2px] p-1 text-center m-auto w-fit fixed bottom-[10px] right-[43%] md:bottom-[94.125%] md:right-[2%]"
         type="button"
         onClick={resetGame}
       >
