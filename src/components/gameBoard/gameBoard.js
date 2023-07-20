@@ -83,11 +83,11 @@ const GameBoard = () => {
   const mapCards = cardState.map((card) => {
     return (
       <div
-        className=" border-solid border-black border-[2px] w-[100px] p-1 cursor-pointer text-center"
+        className=" border-solid border-black border-[2px] w-[100px] p-1 cursor-pointer text-center md:w-[150px]"
         key={card.id}
         onClick={() => cardClick(card)}
       >
-        <p>{card.name}</p>
+        <p className=" text-md md:text-xl">{card.name}</p>
         <img className=" w-[100%]" src={card.img} />
       </div>
     );
