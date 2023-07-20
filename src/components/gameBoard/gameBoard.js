@@ -29,12 +29,23 @@ const GameBoard = () => {
 
   const [style, setStyle] = useState(modalBGFadeIn);
 
+  const [tutorialLoad, setTutorialLoad] = useState(true);
+
   const handleClose = () => {
     setStyle(modalBGFadeOut);
+    setCardFade(cardFadeOutReset);
     setTimeout(() => {
       resetGame();
       setGameLost(false);
       setStyle(modalBGFadeIn);
+      setCardFade(cardFadeIn);
+    }, 400);
+  };
+
+  const handleTutClose = () => {
+    setStyle(modalBGFadeOut);
+    setTimeout(() => {
+      setTutorialLoad(false);
     }, 400);
   };
 
@@ -97,13 +108,28 @@ const GameBoard = () => {
     }
   };
 
+  const cardFadeIn = { animation: "modalBGFadeIn .25s ease 0s" };
+  const cardFadeOut = { animation: "modalBGFadeOut .25s ease 0s" };
+  const cardFadeOutReset = { animation: "modalBGFadeOut .5s ease 0s" };
+
+  const [cardFade, setCardFade] = useState(cardFadeIn);
+
   //Maps cards to gameboard div.
   const mapCards = cardState.map((card) => {
     return (
       <div
-        className=" border-solid border-black border-[2px] w-[100px] p-1 cursor-pointer text-center md:w-[150px]"
+        className=" bg-slate-300 shadow-lg rounded w-[100px] p-2 cursor-pointer text-center md:w-[150px] transition-all hover:scale-[102%] hover:transition-all"
         key={card.id}
-        onClick={() => cardClick(card)}
+        onClick={() => {
+          if (checkClickable(card)) {
+            setCardFade(cardFadeOut);
+            setTimeout(() => {
+              cardClick(card);
+              setCardFade(cardFadeIn);
+            }, 150);
+          } else cardClick(card);
+        }}
+        style={cardFade}
       >
         <p className=" text-md md:text-xl">{card.name}</p>
         <img className=" w-[100%]" src={card.img} />
@@ -113,6 +139,37 @@ const GameBoard = () => {
 
   return (
     <div className="m-auto grid grid-cols-1 align-middle">
+      {tutorialLoad && (
+        <div
+          id="lostGameModal"
+          className=" fixed w-[100lvw] h-[100lvh] top-0 left-0 bg-[rgba(0,0,0,.875)] z-10"
+          style={style}
+        >
+          <div className="modalWindowFadeDown bg-white w-fit p-5 z-20 text-center rounded shadow-lg fixed top-40 left-[28%] md:left-[42.5lvw]">
+            <p className="font-bold text-2xl">Code Shuffle</p>
+            <div className="flex flex-col w-[150px] m-5 text-center text-lg">
+              <h1 className="font-bold">Rules:</h1>
+              <ul className="list-disc">
+                <li className="w-fit text-[17px]">
+                  During each level, you may only click each language once.
+                </li>
+                <li className="w-fit text-[17px]">
+                  If you click an icon twice in one level, you lose!
+                </li>
+              </ul>
+            </div>
+            <button
+              className=" bg-green-300 font-bold p-1 rounded-md shadow-lg hover:bg-green-400 transition-all hover:transition-all"
+              type="button"
+              onClick={() => {
+                handleTutClose();
+              }}
+            >
+              Play Game
+            </button>
+          </div>
+        </div>
+      )}
       {gameLost ? (
         <div
           id="lostGameModal"
