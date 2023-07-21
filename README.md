@@ -2,7 +2,7 @@
 
 The Odin Project Memory Game using React Hooks. Basically just a game where you're presented with a certain amount of unique cards. You click one, and then they shuffle. You're not supposed to
 
--- I completely realize the implementation of Redux was completely unneccessary for the scope of this project, but we use redux at work, so I wanted to learn how to use it here.
+- I completely realize the implementation of Redux was completely unneccessary for the scope of this project, but we use redux at work, so I wanted to learn how to use it here.
 
 ## Code Outline
 
